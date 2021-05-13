@@ -42,7 +42,10 @@ class PostViewHolder(var binding: VhItemPostBinding) : RecyclerView.ViewHolder(b
             .load(data.icon_url)
             .into(binding.authorIcon)
 
-        Glide.with(binding.postImage).load(data.url).into(binding.postImage)
+        Glide.with(binding.postImage)
+            .setDefaultRequestOptions(RequestOptions())
+            .load(data.url)
+            .into(binding.postImage)
 
         itemView.setOnClickListener {
             onPostClick(data)
